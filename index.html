@@ -1,0 +1,87 @@
+﻿<!doctype html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Список сделок</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link href="css/application.css" rel="stylesheet">
+
+</head>
+<body>
+<div id="app" class="container-fluid">
+	<div class="bs-callout bs-callout-success">
+		<h4>Список сделок</h4>
+	</div>
+	<div class="row">
+		<div class="col-md-8 col-sm-6">
+			<div class="panel panel-default">
+				<table class="table table-responsive">
+					<thead>
+						<tr>
+							<th>Наименование</th>
+							<th>Сумма</th>
+							<th>Дата создания</th>
+							<th>Стадия</th>
+							<th>Ответственный</th>
+						</tr>
+					</thead>
+					<tbody id="deal-list">
+						<tr>
+							<td colspan="7"><i class="fa fa-spinner fa-spin"></i></td>
+						</tr>
+					</tbody>
+				</table>			
+			</div>			
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="userInfoModal" tabindex="-1" role="dialog" aria-labelledby="userInfoModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userInfoModalTitle">Информация о пользователя</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="row modal-body">
+                <div class="col-12 col-sm-6 col-md-4">
+                    <img id="userInfoPhoto" src="noimage.png" alt="User image">
+                </div>
+                <div class="col-12 col-sm-6 col-md-8">
+                    <h6 id="userInfoName"></h6>
+                    <div>E-mail: <span id="userInfoEmail"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/application.js"></script>
+<script src="//api.bitrix24.com/api/v1/"></script>
+
+<script>
+    $(document).ready(function () {
+        BX24.init(function () {
+            app.displayDeals();
+        });
+    });
+</script>
+
+</body>
+</html>
